@@ -53,7 +53,7 @@ def delete_task(id): #recebe o id da tarefa
     task = next((task for task in tasks if task.id == id), None) #busca a tarefa na lista
     if task:
         tasks.remove(task) #remove a tarefa da lista
-        return jsonify({"message": "Task deleted"}) #retorna uma mensagem de sucesso
+        return jsonify({"message": "Task deleted successfully"}) #retorna uma mensagem de sucesso
     else:
         return jsonify({"message": "Task not found"}), 404 #retorna uma mensagem de erro
 
