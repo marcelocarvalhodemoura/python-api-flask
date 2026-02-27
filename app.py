@@ -15,7 +15,7 @@ def create_task():
         data['description']
     ) #cria a tarefa
     tasks.append(task) #adiciona a tarefa na lista
-    return jsonify(task.to_dict()) #retorna a tarefa em json
+    return jsonify({"message": "Task created successfully", "id": task.id}), 200 #retorna uma mensagem de sucesso
 
 @app.route('/tasks', methods=['GET']) #rota para listar as tarefas
 def get_tasks():
@@ -44,7 +44,7 @@ def update_task(id): #recebe o id da tarefa
         task.title = data['title'] #atualiza o titulo da tarefa
         task.description = data['description'] #atualiza a descricao da tarefa
         task.completed = data['completed'] #atualiza o status da tarefa
-        return jsonify(task.to_dict()) #retorna a tarefa em json
+        return jsonify({"message": "Task updated successfully", "task": task.to_dict()}) #retorna uma mensagem de sucesso
     else:
         return jsonify({"message": "Task not found"}), 404 #retorna uma mensagem de erro
 
